@@ -8,6 +8,9 @@ import {
 import { BackendMiddleware } from '../../backendMiddleware'
 import { InteractionChannel, InteractionFlows } from './types'
 import { CredentialRequestFlow } from './credentialRequestFlow'
+import { AuthenticationFlow } from './authenticationFlow'
+import { AuthCreationArgs } from 'jolocom-lib/js/identityWallet/types'
+import { Authentication } from 'jolocom-lib/js/interactionTokens/authentication'
 
 /***
  * - initiated by InteractionManager when an interaction starts
@@ -19,6 +22,7 @@ export class Interaction {
   private interactionFlow = {
     [InteractionType.CredentialOfferRequest]: CredentialOfferFlow,
     [InteractionType.CredentialRequest]: CredentialRequestFlow,
+    [InteractionType.Authentication]: AuthenticationFlow,
   }
   public flow: InteractionFlows
   public channel: InteractionChannel
